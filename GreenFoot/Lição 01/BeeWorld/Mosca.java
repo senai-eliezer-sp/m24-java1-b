@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Eliezer 
  * @version 2024-04-20
  */
-public class Mosca extends Actor
+public class Mosca extends Inseto
 {
     /**
      *  Método Act é executado sempre que apertamos o botão Act ou 
@@ -15,9 +15,8 @@ public class Mosca extends Actor
     public void act()
     {
         // Add your action code here.
-        move(5);
-        if (isAtEdge()){
-            turn(180);
-        }
+        move(2);
+        verificarCanto();
+        
     }
 }
