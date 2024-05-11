@@ -20,7 +20,8 @@ public class Bala extends Actor
         removerAlien();
         // se atingiu o topo, removemos a bala do mundo
         if (isAtEdge()){
-            getWorld().removeObject(this);
+            //getWorld().removeObject(this);
+            ((SpaceInvadersWorld) getWorld()).removerBala();
         }
    
     }

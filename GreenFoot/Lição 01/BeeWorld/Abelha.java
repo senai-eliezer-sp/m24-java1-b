@@ -13,6 +13,7 @@ public class Abelha extends Actor
     //Campos ou Fields
     public int vidas = 0;
     public int score = 0;
+    public int imgIdx = 0;
     //Crando campo do tipo conjunto de imagens 
     private GreenfootImage[] imagens;
     //Constructors
@@ -23,7 +24,7 @@ public class Abelha extends Actor
         imagens = new GreenfootImage[4]; //defnindo o tamanho do conjunto em 4 elementos
         //Definir as imagens 
         for (int i=0;i<4;i++){
-            imagens[1] = new GreenfootImage("bee0"+(i+1)+".png");
+            imagens[i] = new GreenfootImage("bee0"+(i+1)+".png");
         }
     }
     /**
@@ -34,6 +35,7 @@ public class Abelha extends Actor
     {
         //Add yourres action code here.
         move(3);
+        trocarImagem();
         //Se teclar para esquerda, gira -10°
         if (Greenfoot.isKeyDown("left")){
             turn(-10);
@@ -51,7 +53,7 @@ public class Abelha extends Actor
         //Mostrando as vidas
         mostrarVidas();
         //MOstrando score 
-        mostrarScore();
+        //mostrarScore();
     }
     /**
      * Método que verifica se está na direita do mundo 
@@ -109,8 +111,11 @@ public class Abelha extends Actor
         if (isTouching( Mosca.class )){
             //Remove a mosca rocada.
             removeTouching(Mosca.class);
+            //Greenfoot.playSound(ouch.wav)
             //Aumentar o score
-            score += PONTOS; //score = score + PONTOS;
+            //score += PONTOS; //score = score + PONTOS;
+            //colocando o score do mundo 
+            ((BeeWorld)getWorld()).addScore(PONTOS);
             //Adicionando uma nova mosca no mundo
             int pX = Greenfoot.getRandomNumber(getWorld().getWidth());
             int pY = Greenfoot.getRandomNumber(getWorld().getHeight());
@@ -126,6 +131,7 @@ public class Abelha extends Actor
      */
     public void capturadaPelaAranha(){
         if (isTouching(Aranha.class)){
+            //Greenfoot.playSound(_soundFile_)
             int pX = Greenfoot.getRandomNumber(getWorld().getWidth());
             int pY = Greenfoot.getRandomNumber(getWorld().getHeight());
             setLocation(pX, pY);
@@ -145,4 +151,12 @@ public class Abelha extends Actor
     public void mostrarScore(){
         getWorld().showText("Score: " + score, 700, 20);
     }
-}
+    
+    public void trocarImagem(){
+        setImage(imagens[imgIdx]);
+        imgIdx = (imgIdx + 1) % 4;
+        //imgIdx++;
+        //if (imgIdx>=4){
+        //    imgIdx = 0;
+        }
+    }
