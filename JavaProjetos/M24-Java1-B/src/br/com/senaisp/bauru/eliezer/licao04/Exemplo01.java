@@ -26,10 +26,10 @@ public class Exemplo01 {
 		}
 		//Nome1 é maior que nome 2
 		if (nome1.compareTo(nome2)>0) {
-			System.out.println("Nome2 é maior que noem 1");
+			System.out.println("Nome2 é maior que nome 1");
 		}
 		if (nome1.compareTo(nome2)==0) {
-			System.out.println("Nome1 é igual noem 1- ");
+			System.out.println("Nome1 é igual nome 1- ");
 		}
 		                             
 	}
