@@ -12,7 +12,7 @@ public class Carta {
 	//Constructor 
 	public Carta(int np, int vl) {
 		if (np<1 || np>4) {
-			System.out.println("Naipe Inválido!");
+			throw new RuntimeException("Naipe Inválido!");
 		}
 		if (vl<1 || vl>13) {
 			System.out.println("Número da carta inválido!");
